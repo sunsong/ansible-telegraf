@@ -42,6 +42,9 @@
     state: started
     restart_policy: "{{ telegraf_agent_docker_restart_policy }}"
     command: -config /etc/telegraf/telegraf.conf -config-directory /etc/telegraf/telegraf.d
+    user: "{{ telegraf_uid_docker }}"
+    groups:
+      - "{{ telegraf_gid_docker }}"
     network_mode: "{{ telegraf_agent_docker_network_mode }}"
     security_opts:
       - apparmor:unconfined
